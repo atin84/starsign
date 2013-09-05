@@ -10,7 +10,6 @@
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'war'
-apply plugin: 'jetty'
 apply plugin: 'eclipse-wtp'
 
 // JAVA Version 1.6
@@ -22,6 +21,9 @@ version = '1.0'
 // use Maven Central repositories
 repositories {
    mavenCentral()
+   flatDir {
+        dirs 'lib'
+    }
 }
 
 eclipse {
@@ -48,7 +50,6 @@ sourceSets {
 
 war {
 	baseName = 'starsign-engine'
-	from 'src/main/webapp'
 }
 
 // dependency version information
@@ -81,7 +82,15 @@ dependencies {
 			"org.slf4j:slf4j-api:${version.slf4j}",
 			"org.logback-extensions:logback-ext-spring:0.1.2",
 			"org.codehaus.jackson:jackson-mapper-asl:1.9.13",
-			"org.aspectj:aspectjtools:${version.aspectjtool}"
+			"org.apache.tiles:tiles-core:3.0.4",
+			"org.apache.tiles:tiles-jsp:3.0.4",
+			"org.apache.tiles:tiles-api:3.0.4",
+			"org.aspectj:aspectjtools:${version.aspectjtool}",
+			"org.atmosphere.client:jquery:2.2.3",
+			"org.webjars:jqgrid:4.6.0",
+			"org.webjars:jquery-ui:1.11.1"
+
+	compile files("lib/ojdbc14.jar")		
 
 	providedCompile "javax.servlet:javax.servlet-api:${version.servletApi}"
 

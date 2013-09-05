@@ -18,9 +18,4 @@ public interface ServiceConstant {
 	
 	public static final String SERVICE_ACTION = "ACTION";
 	public static final String SERVICE_RESPONSENAME = "responseName";
-	
-	public static final Integer SUCESS = 1;
-	public static final Integer FAIL = 2;
-	public static final Integer DUPLICATE = 10; 
-
 }

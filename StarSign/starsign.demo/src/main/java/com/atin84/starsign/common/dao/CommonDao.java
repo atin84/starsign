@@ -13,6 +13,7 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
  * @author semoria
  *
  */
+@SuppressWarnings("deprecation")
 public class CommonDao extends SqlMapClientDaoSupport {
 	/**
 	 * insert

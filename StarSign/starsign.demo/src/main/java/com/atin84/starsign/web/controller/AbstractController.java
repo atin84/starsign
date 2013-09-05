@@ -5,7 +5,7 @@ import java.util.Map;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.WebRequest;
 
-import com.atin84.starsign.common.converter.ParametersConverter;
+import com.atin84.starsign.web.controller.conveter.ParametersConverter;
 import com.atin84.starsign.web.model.ServiceContext;
 
 public abstract class AbstractController {	

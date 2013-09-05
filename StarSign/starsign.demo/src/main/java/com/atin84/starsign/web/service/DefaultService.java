@@ -21,8 +21,19 @@ import com.atin84.starsign.web.model.GridModel;
 @Service
 public class DefaultService {
 	private static Logger logger = LoggerFactory.getLogger(DefaultService.class);
+	
 	@Autowired
 	private CommonDao commonDao;
+	
+	public static final String PAGE = "page";
+	
+	public static final String ROWS = "rows";
+	
+	public static final String STARTIDX = "STARTIDX";
+	
+	public static final String ENDIDX = "ENDIDX";
+	
+	public static final String TOTALCNT = "TOTALCNT";
 	
 	public DefaultService() {
 		logger.debug("Create DefaultService");
@@ -87,15 +98,15 @@ public class DefaultService {
 		
 		List<Map<String, Object>> returnList = null;
 		
-		if(param.get("page") != null) {
-			int pageNumber = Integer.parseInt((String)param.get("page"));
-			int rows = Integer.parseInt((String)param.get("rows"));
+		if(param.get(PAGE) != null) {
+			int pageNumber = Integer.parseInt((String)param.get(PAGE));
+			int rows = Integer.parseInt((String)param.get(ROWS));
 			
 			int startIdx = (pageNumber-1)*rows + 1;
 			int endIdx = pageNumber*rows;
 			
-			param.put("STARTIDX", startIdx);
-			param.put("ENDIDX", endIdx);
+			param.put(STARTIDX, startIdx);
+			param.put(ENDIDX, endIdx);
 			
 			returnList = this.commonDao.selectToListMap(param.get(ServiceConstant.SERVICE_ACTION).toString(), param);
 			
@@ -103,15 +114,14 @@ public class DefaultService {
 			int totalPage = 0;
 			
 			if(returnList.size() != 0) {
-				totalCnt = (Integer)returnList.get(0).get("TOTALCNT");
+				totalCnt = (Integer)returnList.get(0).get(TOTALCNT);
 				totalPage = (totalCnt -1) / rows + 1;
 			}
 			
 			model.setPage(String.valueOf(pageNumber));
 			model.setRecords(String.valueOf(totalCnt));
 			model.setTotal(String.valueOf(totalPage));
-		}
-		else {
+		} else {
 			returnList = this.commonDao.selectToListMap(param.get(ServiceConstant.SERVICE_ACTION).toString(), param);
 		}		
 		model.setRows(returnList);

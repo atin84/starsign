@@ -1,4 +1,4 @@
-package com.atin84.starsign.common.converter;
+package com.atin84.starsign.web.controller.conveter;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
