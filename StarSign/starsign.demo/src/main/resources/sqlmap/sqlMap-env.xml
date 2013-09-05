@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="sqlMap-env">
+	<select id="propertySelect.SMSProvider" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT 
+			NAME, VALUE 
+		FROM 
+			T_PROPERTY
+		WHERE
+			NAME IN ('DBTYPE', 'JDBCURL', 'JDBCID', 'JDBCPASSWORD', 'SQL')	
+	</select>
+	
+	<select id="propertySelect.AppDownloadURL" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT 
+			NAME, VALUE 
+		FROM 
+			T_PROPERTY
+		WHERE
+			NAME = 'APPDOWNLOADURL'	
+	</select>
+
+	<select id="propertySelect.NotifyMode" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT 
+			NAME, VALUE 
+		FROM 
+			T_PROPERTY
+		WHERE
+			NAME = 'NOTIFYMODE'	
+	</select>
+
+	<update id="propertyUpdate.property" parameterClass="java.util.HashMap">
+		UPDATE
+			T_PROPERTY
+		SET 
+			VALUE = #VALUE#
+		WHERE
+			NAME = #NAME#
+	</update>
+
+	<select id="listGrid.serviceServerGrid" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT 
+			COUNT(1) OVER() AS TOTALCNT, ROW_NUMBER() OVER(<dynamic><isNotEmpty property="sidx"> ORDER BY $sidx$ $sord$ </isNotEmpty></dynamic>) RNUM, 
+ 			SERVICESERVERID, SERVICESERVERNAME, IP, PORT, PROTOCOL, STATUS
+		FROM 
+			T_SERVICESERVERMANAGE
+	</select>
+		
+	<select id="select.serviceServer" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT 
+			SERVICESERVERID, SERVICESERVERNAME, IP, PORT, PROTOCOL, STATUS
+		FROM 
+			T_SERVICESERVERMANAGE
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="SERVICESERVERID"> SERVICESERVERID = #SERVICESERVERID# </isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<insert id="insert.serviceServer" parameterClass="java.util.HashMap">
+		INSERT INTO T_SERVICESERVERMANAGE
+			(SERVICESERVERID, SERVICESERVERNAME, IP, PORT, PROTOCOL, STATUS, UPDATETIME, REGTIME)
+		VALUES
+			(S_COMMONID.nextval, #SERVICESERVERNAME#, #IP#, #PORT#, #PROTOCOL#, #STATUS#, CURRENT TIMESTAMP, CURRENT TIMESTAMP)
+	</insert>
+	
+	<update id="update.serviceServer" parameterClass="java.util.HashMap">
+		UPDATE 
+			T_SERVICESERVERMANAGE
+		SET
+			UPDATETIME = CURRENT TIMESTAMP
+			<isNotEmpty prepend=" , " property="SERVICESERVERNAME"> SERVICESERVERNAME = #SERVICESERVERNAME# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="IP"> IP = #IP# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="PORT"> PORT = #PORT# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="PROTOCOL"> PROTOCOL = #PROTOCOL# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="STATUS"> STATUS = #STATUS# </isNotEmpty>
+		WHERE
+			<isNotEmpty property="id"> SERVICESERVERID = #id# </isNotEmpty>
+			<isNotEmpty property="SERVICESERVERID"> SERVICESERVERID = #SERVICESERVERID# </isNotEmpty>
+	</update>
+	
+	<delete id="delete.serviceServer" parameterClass="java.util.HashMap">
+		DELETE FROM T_SERVICESERVERMANAGE
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id"> SERVICESERVERID = #id# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="SERVICESERVERID"> SERVICESERVERID = #SERVICESERVERID# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="SERVICESERVERIDLIST">
+				<iterate property="SERVICESERVERIDLIST" open="SERVICESERVERID IN (" conjunction=", " close=")"> #SERVICESERVERIDLIST[]# </iterate> 
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+	
+	<select id="listGrid.modelGrid" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT 
+			COUNT(1) OVER() AS TOTALCNT, ROW_NUMBER() OVER(<dynamic><isNotEmpty property="sidx"> ORDER BY $sidx$ $sord$ </isNotEmpty></dynamic>) RNUM, 
+ 			MODELID, MODELNAME, MANUFACTURERID
+		FROM 
+			T_MODEL
+	</select>
+	<select id="listGrid.manufacturerGrid" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT 
+			COUNT(1) OVER() AS TOTALCNT, ROW_NUMBER() OVER(<dynamic><isNotEmpty property="sidx"> ORDER BY $sidx$ $sord$ </isNotEmpty></dynamic>) RNUM, 
+ 			MANUFACTURERID, MANUFACTURERNAME
+		FROM 
+			T_MANUFACTURER
+	</select>
+	<update id="update.model" parameterClass="java.util.HashMap">
+		UPDATE
+			T_MODEL
+		<dynamic prepend="SET">
+			<isNotEmpty prepend=" , " property="MODELNAME"> MODELNAME = #MODELNAME#</isNotEmpty>
+		</dynamic>
+		WHERE
+			MODELID = #MODELID#
+	</update>
+	<update id="update.manufacturer" parameterClass="java.util.HashMap">
+		UPDATE
+			T_MANUFACTURER
+		<dynamic prepend="SET">
+			<isNotEmpty prepend=" , " property="MANUFACTURERNAME"> MANUFACTURERNAME = #MANUFACTURERNAME#</isNotEmpty>
+		</dynamic>
+		WHERE
+			MANUFACTURERID = #MANUFACTURERID#
+	</update>
+	
+	<select id="listGrid.admin" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT 
+			A.* 
+		FROM (
+			SELECT
+				COUNT(1) OVER() AS TOTALCNT, 
+				ROW_NUMBER() OVER(<dynamic><isNotEmpty property="sidx"> ORDER BY $sidx$ $sord$ </isNotEmpty></dynamic>) RNUM, 
+				ADMINID, NAME, PHONE, EMAIL, 
+				CASE 
+					WHEN LENGTH(STARTIP) > 0 THEN TRIM(STARTIP) || ' ~ ' || TRIM(ENDIP)
+                	ELSE '' 
+                END AS IPRANGE,
+				DESCRIPTION, TRIM(STARTIP) AS STARTIP, TRIM(ENDIP) AS ENDIP, PW,
+				PWRETRYCOUNT
+			FROM
+			    T_ADMIN
+			) A
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="STARTIDX"> A.RNUM BETWEEN #STARTIDX# AND #ENDIDX# </isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="select.adminCount" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT
+			COUNT(*) AS COUNT
+		FROM
+			T_ADMIN
+		WHERE
+			ADMINID = #ADMINID#
+	</select>
+
+	<insert id="insert.admin" parameterClass="java.util.HashMap">
+		INSERT INTO T_ADMIN
+			(ADMINID, PW, NAME, PHONE, EMAIL, STARTIP, ENDIP, DESCRIPTION)
+		VALUES
+			(#ADMINID#, #PW#, #NAME#, #PHONE#, #EMAIL#, #STARTIP#, #ENDIP#, #DESCRIPTION#)
+	</insert>
+
+	<update id="update.admin" parameterClass="java.util.HashMap">
+		UPDATE 
+			T_ADMIN
+		<dynamic prepend="SET">
+			<isNotEmpty prepend=" , " property="PW"> PW = #PW# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="NAME"> NAME = #NAME# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="PHONE"> PHONE = #PHONE# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="EMAIL"> EMAIL = #EMAIL# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="STARTIP"> STARTIP = #STARTIP# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="ENDIP"> ENDIP = #ENDIP# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="DESCRIPTION"> DESCRIPTION = #DESCRIPTION# </isNotEmpty>
+			<isNotEmpty prepend=" , " property="PWRETRYCOUNT"> PWRETRYCOUNT = #PWRETRYCOUNT# </isNotEmpty>
+		</dynamic>
+		WHERE
+			ADMINID = #ADMINID#
+	</update>
+	
+	<update id="update.unlockadmin" parameterClass="java.util.HashMap">
+		UPDATE 
+			T_ADMIN
+		SET
+			PWRETRYCOUNT = 0
+		WHERE
+			ADMINID = #ADMINID#
+	</update>
+	
+	<delete id="delete.admin" parameterClass="java.util.HashMap">
+		DELETE FROM
+			T_ADMIN
+		WHERE
+			ADMINID = #ADMINID#
+	</delete>
+	
+	<select id="select.licenseKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT
+			LICENSEKEY
+		FROM
+			T_LICENSE
+		FETCH FIRST 1 ROWS ONLY
+	</select>	
+</sqlMap> 
