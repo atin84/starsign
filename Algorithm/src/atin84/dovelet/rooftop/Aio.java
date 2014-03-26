@@ -6,6 +6,13 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Vector;
 
+/**
+ * koi_aio
+ * 아시아 정보올림피아드
+ * http://183.106.113.109/pool/koi_aio/koi_aio.php?pname=koi_aio
+ * @author atin84
+ *
+ */
 public class Aio {
 
 	private HashMap<Integer, Integer> peopleMap = new HashMap<Integer, Integer>();

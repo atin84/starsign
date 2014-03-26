@@ -2,6 +2,13 @@ package atin84.dovelet.rooftop;
 import java.util.Scanner;
 import java.util.Vector;
 
+/**
+ * koi_Etrain
+ * 지능형 기차
+ * http://183.106.113.109/pool/koi_Etrain/koi_Etrain.php?pname=koi_Etrain
+ * @author atin84
+ *
+ */
 public class Etrain {
 	private Vector<Integer> p = new Vector<Integer>(4, 0);
 	
