@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="5 seconds">
+
+	<timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss" />
+
+	<property name="product.root" value="D:\\" />
+	
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d %-5.5r][%-5p][%-1.20class{1}]|%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${product.root}/data/log/was/${product.name}.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${product.root}/data/log/was/${product.name}.%d{yyyy-MM-dd}.log
+			</FileNamePattern>
+			<maxHistory>180</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>[%d %-5.5r][%-5p][%-1.20class{1}]|%msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<logger name="org.springframework">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="org.springframework.web.mvc">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="com.ibatis">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="oracle.jdbc">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="org.apache">
+		<level value="INFO" />
+	</logger>
+	
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>

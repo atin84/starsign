@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+<!--=============================================================================================
+     Static Layout Template
+=================================================================================================-->
+    <definition name="defaultTemplate" template="/WEB-INF/jsp/template/defaultTemplate.jsp">
+		<put-attribute name="title" value=" ::: Ahnlab Mobile Center Server ::: " type="string"/>
+    	<put-attribute name="header" value="/WEB-INF/jsp/include/header.jsp"/>
+    	<put-attribute name="menu" value="/WEB-INF/jsp/include/menu.jsp"/>
+    	<put-attribute name="dialog" value="/WEB-INF/jsp/include/dialog.jsp"/>
+    </definition>
+    
+    <definition name="defaultLeftTemplate" template="/WEB-INF/jsp/template/defaultLeftTemplate.jsp">
+		<put-attribute name="title" value=" ::: Ahnlab Mobile Center Server ::: " type="string"/>
+    	<put-attribute name="header" value="/WEB-INF/jsp/include/header.jsp"/>
+    	<put-attribute name="menu" value="/WEB-INF/jsp/include/menu.jsp"/>
+    	<put-attribute name="dialog" value="/WEB-INF/jsp/include/dialog.jsp"/>
+    </definition>
+    
+    <definition name="defaultEnvTemplate" template="/WEB-INF/jsp/template/defaultEnvTemplate.jsp">
+		<put-attribute name="title" value=" ::: Ahnlab Mobile Center Server ::: " type="string"/>
+    	<put-attribute name="header" value="/WEB-INF/jsp/include/header.jsp"/>
+    	<put-attribute name="menu" value="/WEB-INF/jsp/include/menu.jsp"/>    	
+    	<put-attribute name="dialog" value="/WEB-INF/jsp/include/dialog.jsp"/>
+    	<put-attribute name="left" value="/WEB-INF/jsp/left/leftenvmenu.jsp"/>
+    </definition>
+    
+	<definition name="gridEdit" template="/WEB-INF/jsp/blank.jsp" />
+	
+	<definition name="ajax/service" template="/WEB-INF/jsp/blank.jsp" />
+			
+	<definition name="login" template="/WEB-INF/jsp/login/login.jsp" />
+	
+	<definition name="denied" template="/WEB-INF/jsp/login/denied.jsp" />
+	
+	<definition name="result" template="/WEB-INF/jsp/result.jsp" />
+	
+	<definition name="main" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" />
+	</definition>
+	
+	<definition name="error" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/error.jsp" />
+	</definition>
+	
+	<definition name="dashboard" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/monitoring/dashboard.jsp" />
+	</definition>
+	
+	<definition name="sendsuccess" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/monitoring/sendsuccess.jsp" />
+	</definition>
+	
+	<definition name="sendsearch" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/monitoring/sendsearch.jsp" />
+	</definition>
+	
+	<definition name="badcodesearch" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/monitoring/badcodesearch.jsp" />
+	</definition>
+	
+	<definition name="badcodeuser" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/monitoring/badcodeuser.jsp" />
+	</definition>
+	
+	<definition name="badcode" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/monitoring/badcode.jsp" />
+	</definition>
+	
+	<definition name="policyapply" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/monitoring/policyapply.jsp" />
+	</definition>
+	
+	<definition name="policymanage" extends="defaultLeftTemplate">
+		<put-attribute name="left" value="/WEB-INF/jsp/left/leftpolicymanage.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/policy/policymanage.jsp" />
+	</definition>
+	
+	<definition name="policygroup" extends="defaultLeftTemplate">
+		<put-attribute name="left" value="/WEB-INF/jsp/left/leftpolicygroup.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/policy/policygroup.jsp" />
+	</definition>
+	
+	<definition name="network" extends="defaultLeftTemplate">
+		<put-attribute name="left" value="/WEB-INF/jsp/left/leftnetwork.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/policy/network.jsp" />
+	</definition>
+	
+	<definition name="app" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/policy/app.jsp" />
+	</definition>
+	
+	<definition name="mobilemanage" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/mobile/mobilemanage.jsp" />
+	</definition>
+	
+	<definition name="mobilecontrol" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/mobile/mobilecontrol.jsp" />
+	</definition>
+	
+	<definition name="upload" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/test/upload.jsp" />
+	</definition>
+	
+	<definition name="uploadTest" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/test/upload.jsp" />
+	</definition>
+	
+	<definition name="sms" extends="defaultEnvTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/env/sms.jsp" />
+	</definition>
+	
+	<definition name="download" extends="defaultEnvTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/env/download.jsp" />
+	</definition>
+	
+	<definition name="serviceserver" extends="defaultEnvTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/env/serviceserver.jsp" />
+	</definition>
+	
+	<definition name="code" extends="defaultEnvTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/env/code.jsp" />
+	</definition>
+	
+	<definition name="sendmode" extends="defaultEnvTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/env/sendmode.jsp" />
+	</definition>
+	
+	<definition name="admin" extends="defaultEnvTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/env/admin.jsp" />
+	</definition>
+	
+	<definition name="admin" extends="defaultEnvTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/env/admin.jsp" />
+	</definition>
+	
+	<definition name="log" extends="defaultEnvTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/logs/log.jsp" />
+	</definition>
+</tiles-definitions>
