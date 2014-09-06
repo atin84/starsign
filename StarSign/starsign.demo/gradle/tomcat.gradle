@@ -1,0 +1,16 @@
+/*
+* Tomcat Plugin
+* https://github.com/bmuschko/gradle-tomcat-plugin
+*/
+apply plugin: 'tomcat'
+ 
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def tomcatVersion = '6.0.29'
+    tomcat "org.apache.tomcat:catalina:${tomcatVersion}",
+           "org.apache.tomcat:coyote:${tomcatVersion}",
+           "org.apache.tomcat:jasper:${tomcatVersion}"
+}

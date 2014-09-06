@@ -1,0 +1,11 @@
+/*
+* war gradle
+*
+*/
+apply plugin: 'war'
+
+// Application Version
+war {
+	baseName = 'starsign-engine'
+	version = '1.0'
+}
