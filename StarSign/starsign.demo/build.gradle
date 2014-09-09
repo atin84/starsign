@@ -58,22 +58,25 @@ dependencies {
 			"org.springframework:spring-orm:${version.spring}",
 			"commons-fileupload:commons-fileupload:1.3.1",
 			"org.springframework.security:spring-security-acl:${version.spring}",
+			"org.springframework.security:spring-security-cas-client:3.0.8.RELEASE",
+			"org.springframework.security:spring-security-config:${version.spring}",
 			"org.springframework.security:spring-security-core:${version.spring}",
 			"org.springframework.security:spring-security-web:${version.spring}",
-			"org.springframework.security:spring-security-config:${version.spring}",
 			"org.springframework.security:spring-security-taglibs:${version.spring}",
 			"cglib:cglib-nodep:${version.cglib}",
 			"ch.qos.logback:logback-classic:${version.logback}",
 			"org.slf4j:slf4j-api:${version.slf4j}",
 			"org.logback-extensions:logback-ext-spring:0.1.2",
 			"org.codehaus.jackson:jackson-mapper-asl:1.9.13",
-			"org.apache.tiles:tiles-core:3.0.4",
-			"org.apache.tiles:tiles-jsp:3.0.4",
-			"org.apache.tiles:tiles-api:3.0.4",
+			"org.apache.tiles:tiles-core:2.1.4",
+			"org.apache.tiles:tiles-jsp:2.1.4",
+			"org.apache.tiles:tiles-api:2.1.4",
 			"org.aspectj:aspectjtools:${version.aspectjtool}",
 			"org.atmosphere.client:jquery:2.2.3",
 			"org.webjars:jqgrid:4.6.0",
-			"org.webjars:jquery-ui:1.11.1"
+			"org.webjars:jquery-ui:1.11.1",
+			"commons-dbcp:commons-dbcp:1.4",
+			"org.apache.ibatis:ibatis-sqlmap:2.3.4.726"
 
 	compile files("lib/ojdbc14.jar")		
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
     					http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
@@ -15,7 +16,7 @@
 	================================================================================================= -->
 	<security:global-method-security pre-post-annotations="enabled">
 	</security:global-method-security>
-
+<!--
 	<security:http use-expressions="true" access-denied-page="/denied.do">
 		<security:intercept-url pattern="/*" access="hasRole('ROLE_USER')" />
 		<security:intercept-url pattern="/**/*"	access="hasRole('ROLE_USER')" />
@@ -31,20 +32,21 @@
 
 		<security:remember-me key="MDM" />
 
-		<!-- 동시 접근 제어 -->
 		<security:session-management>
 			<security:concurrency-control
 				max-sessions="1" error-if-maximum-exceeded="false" expired-url="/login.do?error=session" />
 		</security:session-management>
 	</security:http>
 
+	
 	<bean id="characterEncodingFilter" class="org.springframework.web.filter.CharacterEncodingFilter">
-		<!--<security:custom-filter ref="characterEncodingFilter" before="CHANNEL_FILTER" />-->
+		<security:custom-filter ref="characterEncodingFilter" before="CHANNEL_FILTER" />
 		<property name="encoding">
 			<value>utf-8</value>
 		</property>
 	</bean>
-
+	-->
+	
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
 		<property name="cookieName" value="clientlanguage" />
 		<property name="cookieMaxAge" value="100000" />
@@ -68,7 +70,8 @@
 		<property name="commonDao" ref="commonDao" />
 	</bean>
 	-->
-
+	
+	<!--
 	<security:authentication-manager alias="authenticationManager">
 		<security:authentication-provider
 			ref="baseDaoAuthenticationProvider" />
@@ -76,7 +79,7 @@
 
 	<bean id="md5PasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
 
-	<!--
+	
 	<bean id="baseDaoAuthenticationProvider" class="com.atin84.starsign.web.security.provider.BaseDaoAuthenticationProvider">
 		<property name="userDetailsService" ref="userDetailsService" />
 		<property name="passwordEncoder" ref="md5PasswordEncoder" />

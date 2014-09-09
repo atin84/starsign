@@ -4,17 +4,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.springframework.stereotype.Repository;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
 
 /**
- * DAO 공통 인터페이스 모음
+ * DAO 怨듯넻 �씤�꽣�럹�씠�뒪 紐⑥쓬
  * @author semoria
  *
  */
 @SuppressWarnings("deprecation")
+@Repository
 public class CommonDao extends SqlMapClientDaoSupport {
+
+	@Autowired(required=true)
+	public void setSqlMapClientWorkaround(SqlMapClient sqlMapClient) {
+		this.setSqlMapClient(sqlMapClient);
+	}
+
+
 	/**
 	 * insert
 	 * @param statement
@@ -78,7 +90,7 @@ public class CommonDao extends SqlMapClientDaoSupport {
 	public List<? extends Object> selectToListObj(String statement, Map<String, Object> param) {
 		return this.getSqlMapClientTemplate().queryForList(statement, param);
 	}
-	
+
 	public static void main(String[] args) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("tset", "test");

@@ -22,7 +22,7 @@ eclipse {
 sourceSets {
     main {
         resources {
-            srcDir "src/main/webapp"
+            srcDir "src/main/webapp"     
         }
     }
 }

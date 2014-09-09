@@ -24,13 +24,12 @@
 	=================================================================================================-->
 	
 	<context:property-placeholder
-		location="classpath:com/ahnlab/v3me/admin/config/properties/default.properties" />
+		location="classpath:properties/default.properties" />
 	
 	
 	<!--=============================================================================================
 		DataSource Configure for common jdbc
 	=================================================================================================-->
-	<!--
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
@@ -45,8 +44,7 @@
 		<property name="logAbandoned" value="false" />
 		<property name="testWhileIdle" value="true" />
 	</bean>
-	-->
-
+	
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<bean id="transactionManager"
@@ -70,9 +68,13 @@
 	<!--=============================================================================================
 		Configurer Property
 	=================================================================================================-->
+	<bean id="propertyInjectionConfigurer" class="com.atin84.starsign.common.properties.PropertyInjectionConfigurer">
+		<property name="location" 			value="classpath:properties/admin.properties"/>
+	</bean>
+	
  	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:com/ahnlab/v3me/admin/config/sqlmap/sqlMapConfig.xml" />
+		<property name="configLocation" value="classpath:sqlmap/sqlMapConfig.xml" />
 	</bean>
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -83,7 +85,8 @@
 	<!--=============================================================================================
     Bean Configuration
 =================================================================================================-->
-	<context:component-scan base-package="com.ahnlab.v3me.admin">
+	<context:component-scan base-package="com.atin84.starsign">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>

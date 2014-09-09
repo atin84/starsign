@@ -19,14 +19,6 @@ import org.springframework.core.PriorityOrdered;
 import org.springframework.core.io.support.PropertiesLoaderSupport;
 import org.springframework.util.ReflectionUtils;
 
-/**
- * 스프링 빈 컨테이너가 빈을 생성하고 설정한 후에 생성된 빈에 특정 초기 값을 설정한다. 주어진 Properties에 등록되어 있는 값을 @Property
- * annotation이 달린 메서드나 필드에 요구한 값을 설정한다.
- * 
- * @author semoria
- * 
- */
-
 public class PropertyInjectionConfigurer extends PropertiesLoaderSupport 
 										 implements BeanPostProcessor, BeanFactoryAware, PriorityOrdered {
 

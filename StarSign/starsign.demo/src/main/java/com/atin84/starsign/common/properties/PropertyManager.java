@@ -4,7 +4,9 @@ import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PropertyManager {
 	private static Logger logger = LoggerFactory.getLogger(PropertyManager.class);
 	private PropertyInjectionConfigurer propertyInjectionConfigurer;
@@ -32,25 +34,25 @@ public class PropertyManager {
 	}
 	
 	/**
-	 * 파일 업로드 경로
+	 * �뙆�씪 �뾽濡쒕뱶 寃쎈줈
 	 */
 	@Property(name="UPLOAD_BASE")
 	private String uploadBase;
 	
 	/**
-	 * 재품 버전
+	 * �옱�뭹 踰꾩쟾
 	 */
 	@Property(name="PRODUCT_VERSION")
 	private String productVersion;
 
 	/**
-	 * 서버 버전
+	 * �꽌踰� 踰꾩쟾
 	 */
 	@Property(name="SERVER_VERSION")
 	private String serverVersion;
 	
 	/**
-	 * 패스워드 제한 횟수
+	 * �뙣�뒪�썙�뱶 �젣�븳 �슏�닔
 	 */
 	@Property(name="PASSWORD_LIMIT_COUNT")
 	private Integer passwordLimitCount;
@@ -71,7 +73,7 @@ public class PropertyManager {
 	private String defaultAdminPW;
 	
 	/**
-	 * 데쉬보드 화면 리플레쉬 시간(sec)
+	 * �뜲�돩蹂대뱶 �솕硫� 由ы뵆�젅�돩 �떆媛�(sec)
 	 */
 	@Property(name="DEFAULT_REFRESH_TIME")
 	private Integer refreshTime;

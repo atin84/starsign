@@ -8,4 +8,18 @@ apply plugin: 'war'
 war {
 	baseName = 'starsign-engine'
 	version = '1.0'
+	
+	classpath {
+		
+	}
+}
+
+// Exclude directory(WEB-INF) from resource in Gradle
+sourceSets {
+	main {
+		resources {
+			exclude '**/WEB-INF/*'
+			exclude 'WEB-INF'
+		}
+	}	
 }

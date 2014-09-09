@@ -14,7 +14,7 @@
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<File>${product.root}/data/log/was/${product.name}.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${product.root}/data/log/was/${product.name}.%d{yyyy-MM-dd}.log
+			<FileNamePattern>${product.root}/data/${product.name}.%d{yyyy-MM-dd}.log
 			</FileNamePattern>
 			<maxHistory>180</maxHistory>
 		</rollingPolicy>
@@ -44,7 +44,7 @@
 	</logger>
 	
 	<root>
-		<level value="INFO" />
+		<level value="DEBUG" />
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="FILE" />
 	</root>
