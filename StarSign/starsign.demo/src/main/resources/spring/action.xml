@@ -23,6 +23,12 @@
 	<!--=============================================================================================
 		Annotation Handler Mapping
 	=================================================================================================-->
+	<mvc:resources mapping="/resources/js/**" location="classpath:/META-INF/resources/webjars/" />
+	<mvc:resources mapping="/lib/**" location="/WEB-INF/lib/" />
+	
+	<!--=============================================================================================
+		Annotation Handler Mapping
+	=================================================================================================-->
 	<context:annotation-config />
 	
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">

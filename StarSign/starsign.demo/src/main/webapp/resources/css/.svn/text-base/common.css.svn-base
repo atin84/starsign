@@ -1,0 +1,19 @@
+.jqGridEvenRowColor {background:#e7e7e7; color:#000000;}
+.jqGridEvenRowColor1 {background:#d3d3d3; color:#000000;}
+.jqGridEvenRowColor3 {background:#444; color:#DEDEDE;}
+.jqGridEvenRowColor4 {background:#333333; color:#DEDEDE;}
+
+.jqGridMouseOver{background: #999; color: #fff;}
+.jqGridMouseClick{background: #999; color: #fff; font-weight: bold;}
+
+.dialogTitle{color: #cdbb60; font-weight: bolder;}
+
+#help{margin: 0;padding: 0}
+#help li{float: left;list-style: none;}
+#help li a{display: block;text-decoration: none;width: 70px;white-space: nowrap}
+#help li ul{margin: 0;padding: 0;position: absolute;visibility: hidden;}
+#help li ul li{	float: none;display: inline}
+#help li ul li a{	width: auto;}
+
+ 
+.jqgrow td .ipt01 { height: 17px; padding: 2px 5px 0; width: 97px; border: 1px solid #848685; background:#272727;}

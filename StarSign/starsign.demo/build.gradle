@@ -72,7 +72,7 @@ dependencies {
 			"org.apache.tiles:tiles-jsp:2.1.4",
 			"org.apache.tiles:tiles-api:2.1.4",
 			"org.aspectj:aspectjtools:${version.aspectjtool}",
-			"org.atmosphere.client:jquery:2.2.3",
+			"org.webjars:jquery:2.1.1",
 			"org.webjars:jqgrid:4.6.0",
 			"org.webjars:jquery-ui:1.11.1",
 			"commons-dbcp:commons-dbcp:1.4",

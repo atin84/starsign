@@ -6,12 +6,11 @@
 	<title><spring:message code="COM_PRODUCT_NAME" /></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="<c:url value="/resources/css/style_en.css" />" type="text/css" />
-	<script type="text/javascript" src="<c:url value="/resources/js/jquery/jquery-1.6.1.min.js" />"></script>
+	
 	<%@ include file="/WEB-INF/jsp/include/header.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var cookieValue = ""+getCookie('clientlanguage');
-
 			if(cookieValue.toUpperCase() == 'KO' || cookieValue.toUpperCase() == 'KR' || 
 					cookieValue.toUpperCase() == 'KO_KR') {
 				$("#setLocale").val('ko');
@@ -127,7 +126,6 @@
 						<select name="setLocale" style="width:176px" id="setLocale" class="wide" onchange="javascript:selectLocale(this)">
 					    	<option value="ko"><spring:message code="ADMN_LOGIN_BTN01" /></option>
 							<option value="en"><spring:message code="ADMN_LOGIN_BTN02" /></option>
-							<!-- <option value="jp"><spring:message code="ADMN_LOGIN_BTN03" /></option> -->
 						</select>
 					</div>
 					<form name="loginFrm" action="<c:url value='/j_spring_security_check'/>" method="post" id="loginFrm">

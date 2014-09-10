@@ -8,16 +8,24 @@
 <title><spring:message code="COM_PRODUCT_NAME" /></title>
 
 <!-- jQuery -->
+<script type="text/javascript" src="<c:url value="/resources/js/jquery/2.1.1/jquery.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui/1.11.1/jquery-ui.min.js" />"></script>
+<!--
 <script type="text/javascript" src="<c:url value="/resources/js/jquery/jquery-1.6.1.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery/jquery-ui-1.8.11.custom.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery/jquery-ui-i18n.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery/jquery.json-2.2.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery/jquery.form.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery/jquery.blockUI.js" />"></script>
+ -->
+ 
 <!-- jQuery Progressbar -->
+<!--
 <script type="text/javascript" src="<c:url value="/resources/js/jquery/jquery.progressbar.min.js" />"></script>
-
+ -->
+ 
 <!-- Jqgrid -->
+<!--
 <c:choose>
 <c:when test="${currentLocaleLanguage == 'ko'}">
 <script type="text/javascript" src="<c:url value="/resources/js/jquery/jqgrid/i18n/grid.locale-kr.js" />"></script>
@@ -30,20 +38,30 @@
 </c:otherwise>
 </c:choose>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery/jqgrid/jquery.jqGrid.min.js" />"></script>
-
+ -->
+ 
 <!-- HighCharts -->
+<!--
 <script type="text/javascript" src="<c:url value="/resources/js/highcharts/highcharts.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/highcharts/themes/gray.js" />"></script>
-
+ -->
+ 
 <!-- common javascript -->
+<!--
 <script type="text/javascript" src="<c:url value="/resources/js/common/common.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/common/mapCommon.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/common/gridCommon.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/common/validation.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.i18n.properties-min-1.0.9.js" />"></script>
+ -->
+ 
 <!-- MD5 툴킷 -->
+<!--
 <script type="text/javascript" src="<c:url value="/resources/js/webtoolkit.md5.js" />"></script>
+ -->
+ 
 <!-- Stylesheet -->
+<!--
 <link rel="stylesheet" href="<c:url value="/resources/css/ui.jqgrid.css" />" type="text/css" />
 <link rel="stylesheet" href="<c:url value="/resources/css/ui.multiselect.css" />" type="text/css" />
 <c:choose>
@@ -61,18 +79,10 @@
 </c:otherwise>
 </c:choose>
 <link rel="stylesheet" href="<c:url value="/resources/css/common.css" />" type="text/css" />
+-->
 
 <!-- 구글맵 API 정의 -->
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-
-<!-- naver map api 쓰지 않고 구글맵 사용
-<!-- 211.232.30.239:30119 
-<script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=9cb35216b2ba4ca42553ae17954ae3a6"></script>
-<!-- 211.232.30.247:30119
-<script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=e8ae6c2da418ab21087812a17decdd11"></script>
-<!-- localhost:9090 
-<script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=64a4e9e183a4be5c5c3c9812eaf4daef"></script>
--->
 
 <script type="text/javascript">
 	var contextPath = "${pageContext.request.contextPath}";

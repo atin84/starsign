@@ -14,9 +14,9 @@
 	<!--============================================================================================= 
 		Spring-Security Configure 
 	================================================================================================= -->
-	<security:global-method-security pre-post-annotations="enabled">
+<!--	<security:global-method-security pre-post-annotations="enabled">
 	</security:global-method-security>
-<!--
+
 	<security:http use-expressions="true" access-denied-page="/denied.do">
 		<security:intercept-url pattern="/*" access="hasRole('ROLE_USER')" />
 		<security:intercept-url pattern="/**/*"	access="hasRole('ROLE_USER')" />
@@ -53,8 +53,7 @@
 		<property name="cookiePath" value="/" />
 	</bean>
 
-	<bean id="localeChangeInterceptor"
-		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 		<property name="paramName" value="locale" />
 	</bean>
 
