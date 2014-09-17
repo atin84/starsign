@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.atin84.starsign.common.constant.ServiceConstant;
 import com.atin84.starsign.common.dao.CommonDao;
+import com.atin84.starsign.web.WebConstant;
 import com.atin84.starsign.web.model.GridModel;
 
 /**
@@ -43,7 +43,7 @@ public class DefaultService {
 	 * @param context
 	 */
 	public Object select(Map<String, Object> param) {
-		return this.commonDao.selectToMap(param.get(ServiceConstant.SERVICE_ACTION).toString(), param);
+		return this.commonDao.selectToMap(param.get(WebConstant.SERVICE_ACTION).toString(), param);
 	}
 	
 	/**
@@ -51,7 +51,7 @@ public class DefaultService {
 	 * @param context
 	 */
 	public Object list(Map<String, Object> param) {
-		return this.commonDao.selectToListMap(param.get(ServiceConstant.SERVICE_ACTION).toString(), param);
+		return this.commonDao.selectToListMap(param.get(WebConstant.SERVICE_ACTION).toString(), param);
 	}
 	
 	/**
@@ -60,7 +60,7 @@ public class DefaultService {
 	 */
 	public Object update(Map<String, Object> param) {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("status", this.commonDao.update(param.get(ServiceConstant.SERVICE_ACTION).toString(), param));
+		returnMap.put("status", this.commonDao.update(param.get(WebConstant.SERVICE_ACTION).toString(), param));
 		return returnMap;
 	}
 	/**
@@ -69,7 +69,7 @@ public class DefaultService {
 	 */
 	public Object insert(Map<String, Object> param) {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("status", this.commonDao.insert(param.get(ServiceConstant.SERVICE_ACTION).toString(), param));
+		returnMap.put("status", this.commonDao.insert(param.get(WebConstant.SERVICE_ACTION).toString(), param));
 		return returnMap;
 	}
 	/**
@@ -78,7 +78,7 @@ public class DefaultService {
 	 */
 	public Object delete(Map<String, Object> param) {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("status", this.commonDao.delete(param.get(ServiceConstant.SERVICE_ACTION).toString(), param));
+		returnMap.put("status", this.commonDao.delete(param.get(WebConstant.SERVICE_ACTION).toString(), param));
 		return returnMap;
 	}
 	
@@ -108,7 +108,7 @@ public class DefaultService {
 			param.put(STARTIDX, startIdx);
 			param.put(ENDIDX, endIdx);
 			
-			returnList = this.commonDao.selectToListMap(param.get(ServiceConstant.SERVICE_ACTION).toString(), param);
+			returnList = this.commonDao.selectToListMap(param.get(WebConstant.SERVICE_ACTION).toString(), param);
 			
 			int totalCnt = 0;
 			int totalPage = 0;
@@ -122,7 +122,7 @@ public class DefaultService {
 			model.setRecords(String.valueOf(totalCnt));
 			model.setTotal(String.valueOf(totalPage));
 		} else {
-			returnList = this.commonDao.selectToListMap(param.get(ServiceConstant.SERVICE_ACTION).toString(), param);
+			returnList = this.commonDao.selectToListMap(param.get(WebConstant.SERVICE_ACTION).toString(), param);
 		}		
 		model.setRows(returnList);
 		

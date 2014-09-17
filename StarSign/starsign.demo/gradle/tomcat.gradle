@@ -3,7 +3,17 @@
 * https://github.com/bmuschko/gradle-tomcat-plugin
 */
 apply plugin: 'tomcat'
+
+buildscript {
+	repositories {
+		jcenter()
+	}
  
+	dependencies {
+		classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:1.2.4'
+	}
+}
+
 repositories {
     mavenCentral()
 }

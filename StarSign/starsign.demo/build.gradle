@@ -15,6 +15,7 @@ buildscript {
  
     dependencies {
         classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:1.2.4'
+		classpath 'org.gradle.api.plugins:gradle-cargo-plugin:1.5.1'
     }
 }
 
@@ -24,6 +25,7 @@ apply plugin: 'java'
 apply from: 'gradle/war.gradle'
 apply from: 'gradle/eclipse.gradle'
 apply from: 'gradle/tomcat.gradle'
+apply from: 'gradle/jboss.gradle'
 
 
 // JAVA Version 1.6
@@ -52,31 +54,50 @@ def version = [
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
+	// Spring
 	compile	"org.springframework:spring-webmvc:${version.spring}",
 			"org.springframework:spring-jdbc:${version.spring}",
 			"org.springframework:spring-orm:${version.spring}",
-			"org.springframework:spring-orm:${version.spring}",
-			"commons-fileupload:commons-fileupload:1.3.1",
-			"org.springframework.security:spring-security-acl:${version.spring}",
+			"org.springframework:spring-orm:${version.spring}"
+	
+	// iBatis
+	compile	"org.apache.ibatis:ibatis-sqlmap:2.3.4.726"
+			
+	// Spring Secuirty
+	compile	"org.springframework.security:spring-security-acl:${version.spring}",
 			"org.springframework.security:spring-security-cas-client:3.0.8.RELEASE",
 			"org.springframework.security:spring-security-config:${version.spring}",
 			"org.springframework.security:spring-security-core:${version.spring}",
 			"org.springframework.security:spring-security-web:${version.spring}",
-			"org.springframework.security:spring-security-taglibs:${version.spring}",
-			"cglib:cglib-nodep:${version.cglib}",
-			"ch.qos.logback:logback-classic:${version.logback}",
+			"org.springframework.security:spring-security-taglibs:${version.spring}"
+	
+	// Common
+	compile	"commons-fileupload:commons-fileupload:1.3.1",
+			"commons-dbcp:commons-dbcp:1.4"
+	
+	// Logging
+	compile	"org.logback-extensions:logback-ext-spring:0.1.1",
 			"org.slf4j:slf4j-api:${version.slf4j}",
-			"org.logback-extensions:logback-ext-spring:0.1.2",
-			"org.codehaus.jackson:jackson-mapper-asl:1.9.13",
-			"org.apache.tiles:tiles-core:2.1.4",
+			"ch.qos.logback:logback-classic:${version.logback}"
+	
+	// CG LIB
+	compile	"cglib:cglib-nodep:${version.cglib}"
+	
+	// JSON
+	compile	"org.codehaus.jackson:jackson-mapper-asl:1.9.13"
+	
+	// UI - Tiles
+	compile	"org.apache.tiles:tiles-core:2.1.4",
 			"org.apache.tiles:tiles-jsp:2.1.4",
 			"org.apache.tiles:tiles-api:2.1.4",
-			"org.aspectj:aspectjtools:${version.aspectjtool}",
-			"org.webjars:jquery:2.1.1",
+			"org.aspectj:aspectjtools:${version.aspectjtool}"
+	
+	// JQuery
+	compile	"org.webjars:jquery:2.1.1",
 			"org.webjars:jqgrid:4.6.0",
-			"org.webjars:jquery-ui:1.11.1",
-			"commons-dbcp:commons-dbcp:1.4",
-			"org.apache.ibatis:ibatis-sqlmap:2.3.4.726"
+			"org.webjars:jquery-ui:1.11.1"
+	//"com.googlecode.wicket-jquery-ui:wicket-jquery-ui-theme-smoothness:7.0.0-M3"
+	
 
 	compile files("lib/ojdbc14.jar")		
 

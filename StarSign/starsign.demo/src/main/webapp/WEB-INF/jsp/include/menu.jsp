@@ -290,14 +290,6 @@
 	</span>
 	</li>
 </ul>
-<!-- 
-<div id="updateTime" class="updateTime" style="display:none;">
-	<span id="refreshTime"></span>
-	<span class="buttonSg strong">
-		<a href="#" id="refreshButton"><spring:message code='MNTR_BTN01' /></a>
-	</span>
-</div>
--->
 
 <ul id="subMenu" class="subGnb" >
 </ul>

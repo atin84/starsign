@@ -1,0 +1,31 @@
+/*
+* JBoss Plugin
+* https://github.com/bmuschko/gradle-cargo-plugin
+*/
+apply plugin: 'cargo-base'
+
+buildscript {
+	repositories {
+		jcenter()
+	}
+
+	dependencies {
+		classpath 'org.gradle.api.plugins:gradle-cargo-plugin:1.5.1'
+	}
+}
+
+dependencies {
+	def cargoVersion = '1.4.5'
+	cargo "org.codehaus.cargo:cargo-core-uberjar:$cargoVersion",
+		  "org.codehaus.cargo:cargo-ant:$cargoVersion"
+}
+
+task myTomcatRun(type: org.gradle.api.plugins.cargo.tasks.local.CargoRunLocal) {
+    containerId = 'tomcat7x'
+    homeDir = file('/home/user/dev/tools/apache-tomcat-7.0.42')
+}
+
+task myJettyRun(type: org.gradle.api.plugins.cargo.tasks.local.CargoRunLocal) {
+    containerId = 'jetty9x'
+    homeDir = file('/home/user/dev/tools/jetty-distribution-9.0.4.v20130625')
+}

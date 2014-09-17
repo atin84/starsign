@@ -1,4 +1,4 @@
-package com.atin84.starsign.common.util;
+package com.atin84.starsign.web.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,19 +25,6 @@ public class StringUtil {
 		}
 		
 		return list;
-
-		/*
-		StringTokenizer st = new StringTokenizer(string,""+delim);
-		System.out.println(string);
-		List<String> list = new ArrayList<String>();
-		while(st.hasMoreTokens()) {
-			String token = st.nextToken();
-			list.add(token);
-		}
-		
-		System.out.println(list);
-		return list;
-		*/
 	}
 
 	public static boolean isValidPhone(String value) {

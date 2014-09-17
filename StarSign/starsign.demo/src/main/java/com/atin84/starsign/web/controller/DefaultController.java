@@ -25,21 +25,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.atin84.starsign.common.constant.ServiceConstant;
-import com.atin84.starsign.common.dao.CommonDao;
+import com.atin84.starsign.web.WebConstant;
 import com.atin84.starsign.web.model.GridModel;
 import com.atin84.starsign.web.model.ServiceContext;
-import com.atin84.starsign.web.model.UserModel;
 import com.atin84.starsign.web.service.ServiceDispatch;
+import com.atin84.starsign.web.user.UserService;
+import com.atin84.starsign.web.user.model.UserModel;
 
 @Controller
 public class DefaultController extends AbstractController {
 	private static Logger logger = LoggerFactory.getLogger(DefaultController.class);
+	
 	@Autowired
 	private ServiceDispatch serviceDispatch;
 	
 	@Autowired
-	private CommonDao dao;
+	private UserService userService;
 
 	public DefaultController() {
 		logger.debug("Create DefaultController");
@@ -76,7 +77,7 @@ public class DefaultController extends AbstractController {
 			HttpSession session = httprequest.getSession();
 			HashMap<String, Object> param = new HashMap<String, Object>();
 			param.put("USERID", refresh);
-			UserModel currentUser = (UserModel)dao.selectToObj("select.userObjectInfo", param);
+			UserModel currentUser = userService.viewUser(param);
             
 	        session.setAttribute("currUser", currentUser);
 		}
@@ -128,13 +129,13 @@ public class DefaultController extends AbstractController {
 		ServiceContext context = this.preExecute(request);
 		Map<String, Object> paramMap = context.getParamList().get(0);
 		
-		paramMap.put(ServiceConstant.SERVICE_RESPONSENAME, query);
+		paramMap.put(WebConstant.SERVICE_RESPONSENAME, query);
 		if(operation.equals("add")) {
-			paramMap.put(ServiceConstant.SERVICE_ACTION, ServiceConstant.INSERT + "." + query);
+			paramMap.put(WebConstant.SERVICE_ACTION, WebConstant.INSERT + "." + query);
 		} else if(operation.equals("edit")) {
-			paramMap.put(ServiceConstant.SERVICE_ACTION, ServiceConstant.UPDATE + "." + query);
+			paramMap.put(WebConstant.SERVICE_ACTION, WebConstant.UPDATE + "." + query);
 		} else if(operation.equals("del")) {
-			paramMap.put(ServiceConstant.SERVICE_ACTION, ServiceConstant.DELETE + "." + query);	
+			paramMap.put(WebConstant.SERVICE_ACTION, WebConstant.DELETE + "." + query);	
 		} else {
 			logger.warn("wrong grid edit message");
 		}

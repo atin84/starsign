@@ -1,4 +1,4 @@
-package com.atin84.starsign.web.service.handler;
+package com.atin84.starsign.web.service;
 
 import java.util.Map;
 

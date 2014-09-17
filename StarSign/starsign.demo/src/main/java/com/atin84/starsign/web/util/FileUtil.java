@@ -1,4 +1,4 @@
-package com.atin84.starsign.common.util;
+package com.atin84.starsign.web.util;
 
 import java.io.File;
 import java.io.IOException;

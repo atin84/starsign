@@ -1,6 +1,27 @@
-package com.atin84.starsign.web.security.handler;
+package com.atin84.starsign.web.security;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
+import org.springframework.security.web.savedrequest.SavedRequest;
+import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.LocaleResolver;
+
+import com.atin84.starsign.common.dao.CommonDao;
+import com.atin84.starsign.common.properties.PropertyManager;
+import com.atin84.starsign.web.user.model.UserModel;
 
 /**
  * <PRE>
@@ -17,7 +38,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 
 public class SessionSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 	
-	/*private CommonDao dao;
+	private CommonDao dao;
 	private LocaleResolver localeResolver;
 	
 	private RequestCache requestCache = new HttpSessionRequestCache();
@@ -105,5 +126,5 @@ public class SessionSuccessHandler extends SavedRequestAwareAuthenticationSucces
 	}
 	public void setLocaleResolver(LocaleResolver localeResolver){
 		this.localeResolver = localeResolver;
-	}*/
+	}
 }

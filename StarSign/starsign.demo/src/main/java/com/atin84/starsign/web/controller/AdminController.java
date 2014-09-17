@@ -5,7 +5,6 @@ import java.net.UnknownHostException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,15 +17,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.atin84.starsign.common.dao.CommonDao;
 import com.atin84.starsign.common.properties.PropertyManager;
+import com.atin84.starsign.web.user.UserService;
 
 @Controller
 public class AdminController extends AbstractController {
 	private static Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
 	@Autowired
-	private CommonDao commonDao;
+	private UserService userService;
 
 	@Autowired
 	private PropertyManager propertyManager;
@@ -76,15 +75,9 @@ public class AdminController extends AbstractController {
 			sqlParam.put("ADMINID", defaultWebAdminID);
 			sqlParam.put("PW", getMD5String(defaultWebAdminPW));
 			
+			Integer count = userService.countUser(sqlParam);
 			// 1. �대� 議댁옱�섎뒗吏�泥댄겕
-			List<Map<String, Object>> selectList = null;
-			selectList = this.commonDao.selectToListMap("select.adminCount", sqlParam);
-			
-			if(selectList.size() > 0) {
-				Map<String, Object> result = selectList.get(0);
-				
-				int count = Integer.parseInt(result.get("COUNT").toString());
-				
+			if(count != null) {
 				if(count == 0) {
 					//2. ID媛��놁쑝硫�Insert
 					sqlParam.put("NAME", "AMC");
@@ -95,8 +88,7 @@ public class AdminController extends AbstractController {
 					sqlParam.put("DESCRIPTION", "AhnLabMobileCenter(AMC)");
 					
 					adminInsert(sqlParam);
-				}
-				else {
+				} else {
 					//3. ID媛��덉쑝硫�Update
 					sqlParam.put("PWRETRYCOUNT", "0");
 					adminUpdate(sqlParam);
@@ -106,11 +98,11 @@ public class AdminController extends AbstractController {
 	}
 	
 	public void adminInsert(Map<String, Object> param) {
-		this.commonDao.insert("insert.admin", param);
+		this.userService.insertUser(param);
 	}
 	
 	public void adminUpdate(Map<String, Object> param) {
-		this.commonDao.update("update.admin", param);
+		this.userService.updateUser(param);
 	}
 
 	/*

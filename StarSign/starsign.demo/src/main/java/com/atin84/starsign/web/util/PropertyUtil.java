@@ -1,11 +1,11 @@
-package com.atin84.starsign.common.util;
+package com.atin84.starsign.web.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.atin84.starsign.common.constant.ServiceConstant;
+import com.atin84.starsign.web.WebConstant;
 
 public class PropertyUtil {
 
@@ -23,7 +23,7 @@ public class PropertyUtil {
 		
 		for (String key : map.keySet()) {
 			
-			if (key.equals(ServiceConstant.SERVICE_ACTION) || key.equals(ServiceConstant.SERVICE_RESPONSENAME))
+			if (key.equals(WebConstant.SERVICE_ACTION) || key.equals(WebConstant.SERVICE_RESPONSENAME))
 				continue;
 			
 			Map<String, Object> property = new HashMap<String, Object>();

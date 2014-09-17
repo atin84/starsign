@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 /**
- * DAO 怨듯넻 �씤�꽣�럹�씠�뒪 紐⑥쓬
+ * DAO 
  * @author semoria
  *
  */
@@ -25,7 +25,6 @@ public class CommonDao extends SqlMapClientDaoSupport {
 	public void setSqlMapClientWorkaround(SqlMapClient sqlMapClient) {
 		this.setSqlMapClient(sqlMapClient);
 	}
-
 
 	/**
 	 * insert

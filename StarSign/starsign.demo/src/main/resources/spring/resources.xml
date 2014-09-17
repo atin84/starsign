@@ -17,7 +17,7 @@
 	<!--=============================================================================================
 		Annotation Handler Mapping
 	=================================================================================================-->
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<!--<mvc:resources mapping="/resources/**" location="/resources/" />-->
 	
 	<mvc:resources mapping="/resources/js/**" location="classpath:/META-INF/resources/webjars/" />
 	

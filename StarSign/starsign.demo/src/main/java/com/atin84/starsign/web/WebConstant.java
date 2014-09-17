@@ -1,11 +1,6 @@
-package com.atin84.starsign.common.constant;
+package com.atin84.starsign.web;
 
-/**
- * 서비스
- * @author semoria
- *
- */
-public interface ServiceConstant {
+public final class WebConstant {
 	public static final String SELECT = "select";
 	public static final String UPDATE = "update";
 	public static final String DELETE = "delete";

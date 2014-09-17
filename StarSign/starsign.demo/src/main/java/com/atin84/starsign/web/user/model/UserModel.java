@@ -1,4 +1,4 @@
-package com.atin84.starsign.web.model;
+package com.atin84.starsign.web.user.model;
 
 /**
  * 사용자 정보
